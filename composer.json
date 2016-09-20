@@ -1,0 +1,20 @@
+{
+  "name": "jsebrech/fifty",
+  "description": "Fifty minute nano-framework",
+  "homepage": "https://github.com/jsebrech/fifty",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Joeri Sebrechts",
+      "email": "joeri@sebrechts.net"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Fifty": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.6.0"
+  }
+}
