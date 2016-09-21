@@ -141,7 +141,7 @@ Usage:
       
       // insert a User instance with $id and $name properties
       _::query(
-        "insert into users (id, name) values(:id, :name)",
+        "insert into users (id, name) values (:id, :name)",
         (array) $user
       )
 
