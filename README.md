@@ -138,6 +138,12 @@ Usage:
         "select id, name from users where name like ?",
         ["t" => "J%"]
       )->fetchAll()
+      
+      // insert a User instance with $id and $name properties
+      _::query(
+        "insert into users (id, name) values(:id, :name)",
+        (array) $user
+      )
 
 Tip: this can be combined with _::cast
 
