@@ -70,7 +70,7 @@ Usage:
       _::$auth = new AuthPlugin();
       
       // authenticate and log in if needed
-      // true can be replaced with $arg to pass to plugin login
+      // true can be replaced with $arg to pass to plugin login()
       $user = _::authenticate(true);
       
       // check if a user is logged in
@@ -131,7 +131,7 @@ Database layer.
 Usage:
 
       // during init
-      _::$auth = new PDO(...);
+      _::$pdo = new PDO(...);
       
       // query users with name starting with J
       $rows = _::query(
