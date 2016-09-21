@@ -31,6 +31,8 @@ To try this out:
 
         use Fifty\_;
 
+To see how to use it in practice, check out the [nano-blog](https://github.com/jsebrech/fiftyblog) built with this framework.
+
 ## _::route
 
 Router.
