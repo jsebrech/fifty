@@ -1,9 +1,10 @@
 <?php
-
 namespace Fifty;
 
 class _ {
   public static $auth = null;
+  /** @var \PDO */
+  public static $pdo = null;
 
   // based on http://upshots.org/php/php-seriously-simple-router
   public static function route($path, $routes) {
@@ -32,9 +33,9 @@ class _ {
   public static function cast($that, $as) {
     $result = null;
     if (substr($as, -2, 2) == "[]") {
-      $result = is_array($that) ? _::map($that, function($o) use ($as) {
+      $result = is_array($that) ? array_map(function($o) use ($as) {
         return _::cast($o, substr($as, 0, -2));
-      }) : [];
+      }, $that) : [];
     } else if (class_exists($as)) {
       if (is_object($that) || is_array($that)) {
         $result = new $as();
@@ -64,13 +65,9 @@ class _ {
     return filter_var($value, constant("FILTER_VALIDATE_".strtoupper($rule)), $options);
   }
 
-  public static function query(\PDO $pdo, $sql, $bind = []) {
-    $stmt = $pdo->prepare($sql);
+  public static function query($sql, $bind = []) {
+    $stmt = self::$pdo->prepare($sql);
     return $stmt->execute($bind) ? $stmt : false;
-  }
-
-  public static function map($that, $with) {
-    return array_map($with, $that, array_keys($that));
   }
 
   public static function render($template, $data = []) {
