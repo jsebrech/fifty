@@ -32,6 +32,7 @@ To try this out:
         use Fifty\_;
 
 To see how to use it in practice, check out the [nano-blog](https://github.com/jsebrech/fiftyblog) built with this framework.
+That also serves as a blueprint for an app MVC structure.
 
 ## _::route
 
@@ -138,7 +139,7 @@ Usage:
       // query users with name starting with J
       $rows = _::query(
         "select id, name from users where name like ?",
-        ["t" => "J%"]
+        ["J%"]
       )->fetchAll()
       
       // insert a User instance with $id and $name properties
@@ -162,7 +163,7 @@ Usage:
 
 - Code:
 
-        echo _::render("views/page.phtml", ["title" => "Test", "say" => "Hello, World!"]);
+        echo _::render("views/page.phtml", ["title" => "Test", "body" => "Hello, World!"]);
       
 - Template (views/page.phtml):
 
